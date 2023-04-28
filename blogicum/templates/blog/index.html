@@ -4,64 +4,26 @@
 {% endblock %}
 {% block content %}
       <div class="container py-5">
-        <h1>Лента записей</h1>                        
-        <!-- Перебираем в цикле все посты -->
+        <h1>Лента записей</h1>
+        {% for data in posts %}
         <hr>
         <article>
           <ul>
             <li>
-              Место: Остров отчаянья              
+              Место: {{ data.location}}
             </li>
             <li>
-              Дата: 25 октября 1659 года
+              Дата: {{ data.date}}
             </li>
             <li>
-              Категория: <a href="not-my-day">not-my-day</a>
+              Категория: <a href="{% url 'blog:category.html' data.id %}">{{ data.category}}</a>
             </li>
           </ul>          
           <!-- Первые 10 слов -->
           <p>
-            Всю ночь и весь день шел дождь и дул сильный ...
+            {{ data.text|truncatewords:10}}
           </p>
-          <a href="detail.html">Читать полный текст</a>
+          <a href="{% url 'blog:detail.html' data.id  %}">Читать полный текст</a>
         </article>
-        <hr>
-        <article>
-          <ul>
-            <li>
-              Место: Остров отчаянья              
-            </li>
-            <li>
-              Дата: 1 октября 1659 года
-            </li>
-            <li>
-              Категория: <a href="not-my-day">not-my-day</a>
-            </li>
-          </ul>
-          <!-- Первые 10 слов -->
-          <p>
-            Проснувшись поутру, я увидел, что наш корабль сняло с мели ...
-          </p>
-          <a href="detail.html">Читать полный текст</a>
-        </article>
-        <hr>
-        <article>
-          <ul>
-            <li>
-              Место: Остров отчаянья              
-            </li>
-            <li>
-              Дата: 30 сентября 1659 года.
-            </li>
-            <li>
-              Категория: <a href="travel">travel</a>
-            </li>
-          </ul>
-          <!-- Первые 10 слов -->
-          <p>
-            Наш корабль, застигнутый в открытом море страшным штормом, потерпел крушение. ...
-          </p>
-          <a href="detail.html">Читать полный текст</a>
-        </article>                 
-      </div>
+        {% endfor %}
 {% endblock %}
