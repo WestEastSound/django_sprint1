@@ -5,7 +5,7 @@
 {% block content %}
       <div class="container py-5">
         <h1>Лента записей</h1>
-        {% for data in posts %}
+        {% for data in post %}
         <hr>
         <article>
           <ul>
@@ -16,14 +16,14 @@
               Дата: {{ data.date}}
             </li>
             <li>
-              Категория: <a href="{% url 'blog:category.html' data.category %}">{{ data.category}}</a>
+              Категория: <a href="{% url 'blog:category' data.category %}">{{ data.category}}</a>
             </li>
           </ul>          
           <!-- Первые 10 слов -->
           <p>
             {{ data.text|truncatewords:10}}
           </p>
-          <a href="{% url 'blog:detail.html' data.id  %}">Читать полный текст</a>
+          <a href="{% url 'blog:detail' data.id  %}">Читать полный текст</a>
         </article>
         {% endfor %}
 {% endblock %}

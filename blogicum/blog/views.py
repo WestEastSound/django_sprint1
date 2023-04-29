@@ -45,15 +45,16 @@ posts = [
 ]
 
 
+
 def index(request):
     template = 'blog/index.html'
-    post = {'posts': posts}
+    post = {'post': posts[::-1]}
     return render(request, template, context=post)
 
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    post = {'posts': posts[id]}
+    post = {'post': posts[id]}
     return render(request, template, context=post)
 
 
