@@ -45,7 +45,6 @@ posts = [
 ]
 
 
-
 def index(request):
     template = 'blog/index.html'
     post = {'post': posts[::-1]}
