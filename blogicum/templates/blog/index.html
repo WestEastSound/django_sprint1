@@ -16,7 +16,7 @@
               Дата: {{ data.date}}
             </li>
             <li>
-              Категория: <a href="{% url 'blog:category.html' data.id %}">{{ data.category}}</a>
+              Категория: <a href="{% url 'blog:category.html' data.category %}">{{ data.category}}</a>
             </li>
           </ul>          
           <!-- Первые 10 слов -->

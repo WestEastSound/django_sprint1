@@ -51,13 +51,16 @@ def index(request):
     return render(request, template, context=post)
 
 
-def post_detail(request, pk):
+def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[pk]}
-    return render(request, template, context)
+    post = {'posts': posts[id]}
+    return render(request, template, context=post)
 
 
-def category_posts(request):
+def category_posts(request, category_slug):
     template = 'blog/category.html'
-    context = {'post': posts}
-    return render(request, template, context)
+    context = {
+        'title': 'Публикации в категории - ',
+        'category_slug': category_slug,
+    }
+    return render(request, template, context=context)
