@@ -55,11 +55,10 @@ def post_detail(request, post_id):
     template = 'blog/detail.html'
     post_dict = {}
     for post in posts:
-        pk = post['id']
-        post_dict.update({pk: post})
+        post_dict.update({post['id']: post})
     try:
         context = {'post': posts[post_id]}
-    except Exception:
+    except KeyError:
         raise Http404(f' Такой страницы с номером {post_id} не существует')
     return render(request, template, context=context)
 
